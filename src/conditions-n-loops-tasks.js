@@ -507,7 +507,10 @@ function sortByAsc(arr) {
  */
 function shuffleChar(str, iterations) {
   let result = str;
-  for (let k = 0; k < iterations; k += 1) {
+  const newResult = str;
+  let count = 0;
+  let newItr = iterations;
+  for (let k = 0; k < newItr; k += 1) {
     let result1 = '';
     let result2 = '';
     for (let i = 0; i < result.length; i += 1) {
@@ -519,6 +522,11 @@ function shuffleChar(str, iterations) {
     }
 
     result = result1 + result2;
+    count += 1;
+    if (result === newResult) {
+      newItr = iterations % count;
+      k = -1;
+    }
   }
   return result;
 }
